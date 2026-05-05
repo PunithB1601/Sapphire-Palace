@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS sp_db;
+USE sp_db;
 -- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
 --
 -- Host: localhost    Database: sp_db

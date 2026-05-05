@@ -44,12 +44,13 @@ public class RoomsDAOImpl implements RoomsDAO {
 	            ResultSet rs=ps.executeQuery();
 	            while(rs.next()) {
 	            	rooms=new Rooms();
-	            	rooms.setRoomId(rs.getInt("roomId"));
+	            	rooms.setRoomId(rs.getInt("room_Id"));
 	            	rooms.setRoomNumber(rs.getString("room_number"));
-	            	rooms.setType(rs.getString(""));
-	            	rooms.setAmenities(rs.getString(""));
-	            	rooms.setAvailability(rs.getBoolean(""));
-	            	rooms.setPrice(rs.getDouble(""));
+	            	rooms.setType(rs.getString("type"));
+	            	rooms.setAmenities(rs.getString("amenities"));
+	            	rooms.setAvailability(rs.getBoolean("availability"));
+	            	rooms.setPrice(rs.getDouble("price"));
+	            	rooms.setDescription(rs.getString("description"));
 	            }
 		 }
 		 catch (SQLException e) {
@@ -68,12 +69,13 @@ public class RoomsDAOImpl implements RoomsDAO {
 	            ResultSet rs=ps.executeQuery();
 	            while(rs.next()) {
 	            	rooms=new Rooms();
-	            	rooms.setRoomId(rs.getInt("roomId"));
+	            	rooms.setRoomId(rs.getInt("room_Id"));
 	            	rooms.setRoomNumber(rs.getString("room_number"));
-	            	rooms.setType(rs.getString(""));
-	            	rooms.setAmenities(rs.getString(""));
-	            	rooms.setAvailability(rs.getBoolean(""));
-	            	rooms.setPrice(rs.getDouble(""));
+	            rooms.setType(rs.getString("type"));
+	            	rooms.setAmenities(rs.getString("amenities"));
+	            	rooms.setAvailability(rs.getBoolean("availability"));
+	            	rooms.setPrice(rs.getDouble("price"));
+	            	rooms.setDescription(rs.getString("description"));
 	            	roomsList.add(rooms);
 	            }
 		 }
@@ -108,6 +110,32 @@ public class RoomsDAOImpl implements RoomsDAO {
         } catch (SQLException e) {
             System.out.println("Error deleting room: " + e.getMessage());
         }
+	}
+
+	@Override
+	public List<Rooms> getRoomsByType(String type) {
+		List<Rooms> roomsList=new ArrayList<>();
+		Rooms rooms=null;
+		String sql="SELECT * FROM ROOM WHERE TYPE=?";
+		 try (PreparedStatement ps = con.prepareStatement(sql)) {
+	            ps.setString(1, type);
+			 	ResultSet rs=ps.executeQuery();
+	            while(rs.next()) {
+	            	rooms=new Rooms();
+	            	rooms.setRoomId(rs.getInt("room_Id"));
+	            	rooms.setRoomNumber(rs.getString("room_number"));
+	            rooms.setType(rs.getString("type"));
+	            	rooms.setAmenities(rs.getString("amenities"));
+	            	rooms.setAvailability(rs.getBoolean("availability"));
+	            	rooms.setPrice(rs.getDouble("price"));
+	            	rooms.setDescription(rs.getString("description"));
+	            	roomsList.add(rooms);
+	            }
+		 }
+		 catch (SQLException e) {
+	            System.out.println("Error fetching room: " + e.getMessage());
+	        }
+		return roomsList;
 	}
 
 }

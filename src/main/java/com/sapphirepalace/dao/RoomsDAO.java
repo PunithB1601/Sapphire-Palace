@@ -11,4 +11,5 @@ public interface RoomsDAO {
     List<Rooms> getAllRooms();
     void updateRoom(Rooms room);
     void deleteRoom(Integer roomId);
+    List<Rooms> getRoomsByType(String type);
 }

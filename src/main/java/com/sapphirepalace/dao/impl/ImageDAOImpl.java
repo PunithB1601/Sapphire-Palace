@@ -97,5 +97,18 @@ public class ImageDAOImpl implements ImageDAO {
 	            System.out.println("Error deleting image: " + e.getMessage());
 	        }
 	    }
+		/*
+		 * @Override public List<Image> getImagesByRoomCategory(String type) {
+		 * List<Image> roomImages=new ArrayList<>(); Image image = null; String sql =
+		 * "SELECT * FROM Image WHERE type=?"; try (PreparedStatement ps =
+		 * con.prepareStatement(sql)) { ps.setString(1, type); ResultSet rs =
+		 * ps.executeQuery(); if (rs.next()) { image = new Image();
+		 * image.setImageId(rs.getInt("image_id"));
+		 * image.setRoomId(rs.getInt("room_id"));
+		 * image.setFilePath(rs.getString("file_path"));
+		 * image.setDescription(rs.getString("description")); roomImages.add(image); } }
+		 * catch (SQLException e) { System.out.println("Error fetching image: " +
+		 * e.getMessage()); } return roomImages; }
+		 */
 
 }
