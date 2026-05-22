@@ -11,5 +11,5 @@ public interface ImageDAO {
 	    List<Image> getImagesByRoomId(Integer roomId);
 	    void updateImage(Image image);
 	    void deleteImage(Integer imageId);
-	  //  List<Image> getImagesByRoomCategory(String type);
+	    List<Image> getImagesByRoomType(String type);
 }

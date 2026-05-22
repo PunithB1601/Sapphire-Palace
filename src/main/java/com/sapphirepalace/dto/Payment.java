@@ -7,7 +7,8 @@ public class Payment {
     private Double amount;
     private String paymentDate;
     private String method;
-	public Integer getPaymentId() {
+	
+    public Integer getPaymentId() {
 		return paymentId;
 	}
 	public void setPaymentId(Integer paymentId) {

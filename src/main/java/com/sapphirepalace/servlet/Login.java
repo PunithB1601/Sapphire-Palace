@@ -19,23 +19,22 @@ public class Login extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		GuestDAO gdao=new GuestDAOImpl();
-		Guest login=gdao.getGuestByMailAndPassword(req.getParameter("email"), req.getParameter("password"));
+		Guest login=gdao.getGuestByMailAndPassword(req.getParameter("mail"), req.getParameter("password"));
 		
 		if(login!=null) {
 			HttpSession session=req.getSession();
 			session.setAttribute("user", login);
 			if(login.getGuestId()==1) {
-				req.setAttribute("admin", "Welcome admin!");
 				req.getRequestDispatcher("admin.jsp").forward(req, resp);
 			}
 			else {
-				req.setAttribute("success", "Login successful!");
-				req.getRequestDispatcher("home.jsp").forward(req, resp);
+				req.setAttribute("loginSuccess", "Login successful!");
+				req.getRequestDispatcher("index.jsp").forward(req, resp);
 			}
 		}
 		else {
-			req.setAttribute("error", "Failed to login!");
-			req.getRequestDispatcher("login.jsp").forward(req, resp);
+			req.setAttribute("loginError", "Failed to login!");
+			req.getRequestDispatcher("sign.jsp").forward(req, resp);
 		}
 	}
 }

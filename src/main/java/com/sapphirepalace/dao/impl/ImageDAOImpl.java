@@ -110,5 +110,29 @@ public class ImageDAOImpl implements ImageDAO {
 		 * catch (SQLException e) { System.out.println("Error fetching image: " +
 		 * e.getMessage()); } return roomImages; }
 		 */
+		@Override
+		public List<Image> getImagesByRoomType(String type) {
+			List<Image> roomImages=new ArrayList<Image>();
+			Image image=null;
+			String query="SELECT I.* FROM ROOMS R INNER JOIN IMAGE I"
+					+ "ON R.ROOM_ID=I.ROOM_ID WHERE TYPE=?";
+			try(PreparedStatement ps=con.prepareStatement(query)) {
+				ps.setString(1, type);
+				ResultSet rs=ps.executeQuery();
+				while(rs.next()) {
+					image = new Image();
+	                image.setImageId(rs.getInt("image_id"));
+	                image.setRoomId(rs.getInt("room_id"));
+	                image.setFilePath(rs.getString("file_path"));
+	                image.setDescription(rs.getString("description"));
+	                roomImages.add(image);
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return roomImages;
+		}
 
 }

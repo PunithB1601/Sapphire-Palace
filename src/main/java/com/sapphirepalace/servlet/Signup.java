@@ -19,26 +19,26 @@ public class Signup extends HttpServlet{
 		GuestDAO gdao=new GuestDAOImpl();
 		Guest guest=new Guest();
 
-		Guest alreadyExists=gdao.getGuestByMail(req.getParameter("email"));
-		if(alreadyExists!=null) {
+		Guest alreadyExists=gdao.getGuestByMail(req.getParameter("mail"));
+		if(alreadyExists==null) {
 			if(req.getParameter("password").equals(req.getParameter("confirm"))) {
 				guest.setName(req.getParameter("name"));
 				guest.setPhone(req.getParameter("phone"));
-				guest.setEmail(req.getParameter("email"));
+				guest.setEmail(req.getParameter("mail"));
 				guest.setPassword(req.getParameter("password"));
-				guest.setPreferences(req.getParameter("preferences"));
+				//guest.setPreferences(req.getParameter("preferences"));
 				gdao.addGuest(guest);
-				req.setAttribute("success", "Account created!");
-				req.getRequestDispatcher("login.jsp").forward(req, resp);
+				req.setAttribute("signupSuccess", "Account created!");
+				req.getRequestDispatcher("sign.jsp").forward(req, resp);
 			}
 			else {
-				req.setAttribute("error", "Password mismatch!");
-				req.getRequestDispatcher("signup.jsp").forward(req, resp);
+				req.setAttribute("signupError", "Password mismatch!");
+				req.getRequestDispatcher("sign.jsp").forward(req, resp);
 			}
 		}
 		else {
-			req.setAttribute("error", "Account already exists with this email!");
-			
+			req.setAttribute("signupError", "Account already exists with this email!");
+			req.getRequestDispatcher("sign.jsp").forward(req, resp);
 		}
 
 	}
