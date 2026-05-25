@@ -25,11 +25,10 @@ public class Login extends HttpServlet{
 			HttpSession session=req.getSession();
 			session.setAttribute("user", login);
 			if(login.getGuestId()==1) {
-				req.getRequestDispatcher("admin.jsp").forward(req, resp);
+				resp.sendRedirect("admin.jsp");
 			}
 			else {
-				req.setAttribute("loginSuccess", "Login successful!");
-				req.getRequestDispatcher("index.jsp").forward(req, resp);
+				resp.sendRedirect("guestBooking.jsp");
 			}
 		}
 		else {

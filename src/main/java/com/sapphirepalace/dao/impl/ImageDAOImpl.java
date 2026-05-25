@@ -114,8 +114,8 @@ public class ImageDAOImpl implements ImageDAO {
 		public List<Image> getImagesByRoomType(String type) {
 			List<Image> roomImages=new ArrayList<Image>();
 			Image image=null;
-			String query="SELECT I.* FROM ROOMS R INNER JOIN IMAGE I"
-					+ "ON R.ROOM_ID=I.ROOM_ID WHERE TYPE=?";
+			String query="SELECT I.* FROM ROOM R INNER JOIN IMAGE I "
+					+ "ON R.ROOM_ID=I.ROOM_ID WHERE R.TYPE=?";
 			try(PreparedStatement ps=con.prepareStatement(query)) {
 				ps.setString(1, type);
 				ResultSet rs=ps.executeQuery();

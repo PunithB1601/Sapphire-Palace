@@ -61,7 +61,7 @@
         color: #115eb6; 
     }
 
-    .book-btn a {
+    .book-btn-nav a {
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         background-color: #115eb6;
         color: white;
@@ -74,7 +74,7 @@
         transition: all 0.3s ease;
     }
 
-    .book-btn button:hover {
+    .book-btn-nav button:hover {
         background-color: #bdd9ef;
         color:#2c3a2b;
         transform: translateY(-2px);
@@ -659,6 +659,389 @@
                 padding: 50px 20px;
             }
         }
+        
+       /* Rooms Section */
+        .rooms-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #115eb6;
+            font-weight: 600;
+            margin-bottom: 15px;
+            background: rgba(17, 94, 182, 0.1);
+            padding: 5px 18px;
+            border-radius: 30px;
+        }
+
+        .section-title {
+            font-size: 42px;
+           
+            color: #1a2c3e;
+            margin-bottom: 15px;
+        }
+
+        .section-title span {
+            color: #115eb6;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: #d4af37;
+            margin: 15px auto;
+        }
+
+        .section-desc {
+            color: #5a6e85;
+            max-width: 650px;
+            margin: 0 auto;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Rooms Grid */
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 30px;
+        }
+
+        /* Room Card */
+        .room-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .room-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Image Container with Carousel (Pure CSS) */
+        .image-container {
+            position: relative;
+            height: 260px;
+            overflow: hidden;
+            background: #eef2f8;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .carousel-input {
+            display: none;
+        }
+
+        .carousel-slides {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.4s ease;
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Carousel Dots */
+        .carousel-dots {
+            position: absolute;
+            bottom: 12px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        /* Carousel Arrows */
+        .carousel-arrows {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .arrow {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            text-align: center;
+            line-height: 32px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: auto;
+            transition: all 0.3s ease;
+        }
+
+        .arrow:hover {
+            background: #d4af37;
+            color: #1a2c3e;
+        }
+
+        .prev-arrow {
+            left: 10px;
+        }
+
+        .next-arrow {
+            right: 10px;
+        }
+
+        /* Hide arrows by default, show on hover */
+        .image-container:hover .arrow {
+            display: block;
+        }
+
+        .arrow {
+            display: none;
+        }
+
+        /* Room Badge (Type) */
+        .room-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #115eb6;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 10;
+        }
+
+        /* Room Content */
+        .room-content {
+            padding: 20px;
+        }
+
+        .room-name {
+            font-size: 22px;
+            
+            color: #1a2c3e;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .room-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #115eb6;
+            margin: 10px 0;
+        }
+
+        .room-price span {
+            font-size: 14px;
+            font-weight: normal;
+            color: #5a6e85;
+        }
+
+        .room-description {
+            color: #5a6e85;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        /* Room Features */
+        .room-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 15px 0;
+            padding: 12px 0;
+            border-top: 1px solid #eef2f8;
+            border-bottom: 1px solid #eef2f8;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+            color: #5a6e85;
+        }
+
+        .feature .material-icons {
+            font-size: 16px;
+            color: #115eb6;
+        }
+
+        /* Amenities Tags */
+        .room-amenities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 12px 0;
+        }
+
+        .amenity-tag {
+            background: #f0f4fa;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            color: #1a2c3e;
+        }
+
+        /* Book Button */
+        .book-btn {
+            width: 100%;
+            padding: 12px;
+            background: #115eb6;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .book-btn:hover {
+            background: #0e4d92;
+            transform: translateY(-2px);
+        }
+
+        /* ==================== SPECIFIC CAROUSEL POSITIONS ==================== */
+        /* Room 1 - 4 images */
+        #room1-img1:checked ~ .carousel-slides { transform: translateX(0%); }
+        #room1-img2:checked ~ .carousel-slides { transform: translateX(-100%); }
+        #room1-img3:checked ~ .carousel-slides { transform: translateX(-200%); }
+        #room1-img4:checked ~ .carousel-slides { transform: translateX(-300%); }
+
+        #room1-img1:checked ~ .carousel-dots label[for="room1-img1"],
+        #room1-img2:checked ~ .carousel-dots label[for="room1-img2"],
+        #room1-img3:checked ~ .carousel-dots label[for="room1-img3"],
+        #room1-img4:checked ~ .carousel-dots label[for="room1-img4"] {
+            background: #d4af37;
+            transform: scale(1.2);
+        }
+
+        /* Room 2 - 3 images */
+        #room2-img1:checked ~ .carousel-slides { transform: translateX(0%); }
+        #room2-img2:checked ~ .carousel-slides { transform: translateX(-100%); }
+        #room2-img3:checked ~ .carousel-slides { transform: translateX(-200%); }
+
+        #room2-img1:checked ~ .carousel-dots label[for="room2-img1"],
+        #room2-img2:checked ~ .carousel-dots label[for="room2-img2"],
+        #room2-img3:checked ~ .carousel-dots label[for="room2-img3"] {
+            background: #d4af37;
+            transform: scale(1.2);
+        }
+
+        /* Room 3 - 3 images */
+        #room3-img1:checked ~ .carousel-slides { transform: translateX(0%); }
+        #room3-img2:checked ~ .carousel-slides { transform: translateX(-100%); }
+        #room3-img3:checked ~ .carousel-slides { transform: translateX(-200%); }
+
+        #room3-img1:checked ~ .carousel-dots label[for="room3-img1"],
+        #room3-img2:checked ~ .carousel-dots label[for="room3-img2"],
+        #room3-img3:checked ~ .carousel-dots label[for="room3-img3"] {
+            background: #d4af37;
+            transform: scale(1.2);
+        }
+
+        /* Room 4 - 2 images */
+        #room4-img1:checked ~ .carousel-slides { transform: translateX(0%); }
+        #room4-img2:checked ~ .carousel-slides { transform: translateX(-100%); }
+
+        #room4-img1:checked ~ .carousel-dots label[for="room4-img1"],
+        #room4-img2:checked ~ .carousel-dots label[for="room4-img2"] {
+            background: #d4af37;
+            transform: scale(1.2);
+        }
+
+        /* Room 5 - 3 images */
+        #room5-img1:checked ~ .carousel-slides { transform: translateX(0%); }
+        #room5-img2:checked ~ .carousel-slides { transform: translateX(-100%); }
+        #room5-img3:checked ~ .carousel-slides { transform: translateX(-200%); }
+
+        #room5-img1:checked ~ .carousel-dots label[for="room5-img1"],
+        #room5-img2:checked ~ .carousel-dots label[for="room5-img2"],
+        #room5-img3:checked ~ .carousel-dots label[for="room5-img3"] {
+            background: #d4af37;
+            transform: scale(1.2);
+        }
+
+        /* Room 6 - 4 images */
+        #room6-img1:checked ~ .carousel-slides { transform: translateX(0%); }
+        #room6-img2:checked ~ .carousel-slides { transform: translateX(-100%); }
+        #room6-img3:checked ~ .carousel-slides { transform: translateX(-200%); }
+        #room6-img4:checked ~ .carousel-slides { transform: translateX(-300%); }
+
+        #room6-img1:checked ~ .carousel-dots label[for="room6-img1"],
+        #room6-img2:checked ~ .carousel-dots label[for="room6-img2"],
+        #room6-img3:checked ~ .carousel-dots label[for="room6-img3"],
+        #room6-img4:checked ~ .carousel-dots label[for="room6-img4"] {
+            background: #d4af37;
+            transform: scale(1.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .rooms-section {
+                padding: 40px 20px;
+            }
+            .section-title {
+                font-size: 32px;
+            }
+            .rooms-grid {
+                grid-template-columns: 1fr;
+            }
+            .image-container {
+                height: 220px;
+            }
+        } 
+        
 /* ==================== PRINT STYLES ==================== */
 @media print {
     .experiences-section {
@@ -863,7 +1246,7 @@
             <li><a href="#">Restaurant</a></li>
             <li><a href="#">Contact Us</a></li>
         </ul>
-         <div class="book-btn"><a href="sign.jsp">Book Now</a></div>
+         <div class="book-btn-nav"><a href="sign.jsp">Book Now</a></div>
     </nav>
     <section class="hero">
          <video class="hero-video" autoplay muted loop>
@@ -889,68 +1272,96 @@
 
         <!-- ==================== ROOMS SECTION ==================== -->
 <section class="rooms-section">
-    <div class="rooms-container">
-        <!-- Section Header -->
-        <div class="rooms-header">
-            <span class="section-badge">Luxury Living</span>
-            <h2 class="section-title">Our Exquisite Rooms</h2>
-            <div class="title-divider"></div>
-            <p class="section-desc">
-                Experience unparalleled comfort and elegance in our thoughtfully designed accommodations
-            </p>
-        </div>
+    <!-- Section Header -->
+    <div class="section-header">
+        <span class="section-badge">LUXURY COLLECTION</span>
+        <h2 class="section-title">Our <span>Exquisite Rooms</span></h2>
+        <div class="section-divider"></div>
+        <p class="section-desc">
+            Experience unparalleled comfort and elegance in our thoughtfully designed rooms and suites
+        </p>
+    </div>
 
-       
-
-<!-- Rooms Grid - Cards Container -->
- <div class="rooms-grid" id="roomsGrid">
-<%RoomsDAO rdao=new RoomsDAOImpl();
-ImageDAO idao=new ImageDAOImpl();
-List<Rooms> roomsList=rdao.getAllRooms();%>
-<%List<Rooms> result =roomsList.stream()
-                        		   .collect(Collectors.toMap(
-                            		room -> room.getType().toLowerCase(),
-                            		room -> room,
-                            		(existing, replacement) -> existing,
-                            		LinkedHashMap::new
-                        ))
-                        			.values()
-                        			.stream()
-                        			.toList();
-                        %>
-<%for(Rooms r:result){%>
+    <!-- Rooms Grid -->
+    <div class="rooms-grid">
         
-            <!-- Room Card 1 -->
-            <div class="room-card" data-category="<%=r.getType() %>">
-                <div class="card-image">
-                <%List<Image> imageList=idao.getImagesByRoomId(r.getRoomId());%>
-                
-                    <img src="<%=imageList.get(0).getFilePath()%>" alt="Lagoon View Room">
-                    <div class="price-badge">₹<%=r.getPrice() %><span>/night</span></div>
-                   
-                </div>
-                <div class="card-body">
-                    <h3 class="room-title"><%=r.getType() %></h3>
-                    <p class="room-desc"><%=r.getDescription() %></p>
-                   
-                   <%String amenities = r.getAmenities();
-                   if(amenities!=null&&!amenities.isEmpty()){
-                	   String[] arr=amenities.split(", ");
-                	   %>
-                	   
-                	   
-                    <div class="room-amenities">
-                    <%for(String am:arr){ %>
-                        <span><%=am%></span>
-                        <%}%>
+        <%RoomsDAO rdao=new RoomsDAOImpl();
+        ImageDAO idao=new ImageDAOImpl();
+        
+        List<Rooms> allRooms = rdao.getAllRooms();
+        List<String> roomTypes = allRooms.stream()
+                                         .map(Rooms::getType)
+                                         .distinct()
+                                         .collect(java.util.stream.Collectors.toList());
+
+        for(String type : roomTypes) {
+            Rooms room = allRooms.stream()
+                                 .filter(r -> r.getType().equals(type))
+                                 .findFirst()
+                                 .orElse(null);
+
+            List<Image> images = idao.getImagesByRoomType(type);
+        
+        %>
+        
+        <!-- ==================== ROOM CARD 1 ==================== -->
+        <div class="room-card">
+            <div class="image-container">
+                <div class="carousel-wrapper">
+                    
+            
+           <% int counter = 1;
+           for(Image img : images){%>
+            <input type="radio" name="room<%=room.getRoomId()%>" class="carousel-input" id="room<%=room.getRoomId()%>-img<%=counter%>" <%=(counter==1?"checked" :"")%>>
+        	<%counter++; 
+            } %>
+                    
+                    <div class="carousel-slides">
+                        
+                         <% for(Image img : images) { %>
+                		<div class="carousel-slide">
+                    		<img src="<%=img.getFilePath()%>" alt="<%=img.getDescription()%>">
+                		</div>
+            		<%}%>
                     </div>
-                    <%}%>
-                    <button class="book-now-btn" onclick="bookRoom(1)">Book Now →</button>
+                    
+                    <div class="carousel-dots">
+    <%
+        List<Image> images2 = idao.getImagesByRoomType(room.getType());
+        for(int d = 1; d <= images2.size(); d++) {
+    %>
+        <label for="room<%=room.getRoomId()%>-img<%=d%>" class="dot"></label>
+    <%
+        }
+    %>
+</div>
+                                    
                 </div>
+                <div class="room-badge"><%=room.getType()%></div>
             </div>
-             <%}%>
+            <div class="room-content">
+                <h3 class="room-name"><%=room.getType()%></h3>
+                <div class="room-price">₹<%=room.getPrice()%><span>/ per night</span></div>
+                <p class="room-description"><%=room.getDescription()%></p>
+                <div class="room-features">
+    <%
+        
+        String[] amenities = room.getAmenities().split(",");
+        for(String amenity : amenities) {
+            String trimmed = amenity.trim();
+            String icon = "circle"; // default icon
+    %>
+        <span class="feature"><span class="material-icons"><%=icon%></span> <%=trimmed%></span>
+    <%
+        }
+        
+    %>
+</div>
+                
+                <button class="book-btn">Book Now →</button>
+            </div>
         </div>
-       
+<%}%>
     </div>
 </section>
 
