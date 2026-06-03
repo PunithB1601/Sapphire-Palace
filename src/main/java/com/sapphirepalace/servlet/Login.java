@@ -24,7 +24,7 @@ public class Login extends HttpServlet{
 		if(login!=null) {
 			HttpSession session=req.getSession();
 			session.setAttribute("user", login);
-			if(login.getGuestId()==1) {
+			if(login.getGuestId()==1) { //guestId==1
 				resp.sendRedirect("admin.jsp");
 			}
 			else {

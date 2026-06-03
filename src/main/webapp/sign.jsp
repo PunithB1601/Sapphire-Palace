@@ -267,7 +267,7 @@
     <!-- Header with Logo + Name -->
     <div class="auth-header">
         <a href="#" class="auth-logo">
-            <img src="DCL/sp_hotel_logo.png" alt="Sapphire Palace Logo" class="auth-logo-img">
+            <img src="DCL/logo-removebg-preview.png" alt="Sapphire Palace Logo" class="auth-logo-img">
             <div class="auth-logo-text">SAPPHIRE <span>PALACE</span></div>
         </a>
         <p class="auth-tagline">Welcome to luxury — Sign in to continue or create new account</p>

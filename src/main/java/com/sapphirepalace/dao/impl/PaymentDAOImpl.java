@@ -22,12 +22,11 @@ public class PaymentDAOImpl implements PaymentDAO{
 
     @Override
     public void addPayment(Payment payment) {
-        String sql = "INSERT INTO Payment (booking_id, amount, payment_date, method) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO Payment (booking_id, amount, payment_date, method) VALUES (?, ?, SYSDATE(), ?)";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, payment.getBookingId());
             ps.setDouble(2, payment.getAmount());
-            ps.setString(3, payment.getPaymentDate()); // String instead of Date
-            ps.setString(4, payment.getMethod());
+            ps.setString(3, payment.getMethod());
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error adding payment: " + e.getMessage());

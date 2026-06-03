@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 .footer {
+			
             background: #0A192F;
             color: #ffffff;
             position: relative;

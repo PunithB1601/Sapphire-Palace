@@ -450,7 +450,7 @@
         <div class="sidebar-header">
             <div class="sidebar-logo">
                 <!-- Logo Image Space - Replace src with your logo path -->
-                <img src="DCL/sp_hotel_logo.png" alt="Sapphire Palace Logo" class="sidebar-logo-img" onerror="this.style.display='none'">
+                <img src="DCL/logo-removebg-preview.png" alt="Sapphire Palace Logo" class="sidebar-logo-img" onerror="this.style.display='none'">
                 <div class="sidebar-logo-text">SAPPHIRE <span>PALACE</span></div>
             </div>
         </div>
@@ -485,7 +485,7 @@
     </aside>
     
    
-    <main class="main-content">
+    <<main class="main-content">
         <!-- Top Bar -->
         <div class="top-bar">
             <h1 class="page-title" id="currentPageTitle">Dashboard</h1>
@@ -773,6 +773,6 @@
 
 <%}%>
 
-<%@include file="footer.jsp"%>
+
 </body>
 </html>

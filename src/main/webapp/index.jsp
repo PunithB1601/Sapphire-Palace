@@ -1,3 +1,4 @@
+<%@page import="com.sapphirepalace.dto.Guest"%>
 <%@page import="java.util.LinkedHashMap"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.stream.Collectors"%>
@@ -187,6 +188,30 @@
     justify-content: center;
     flex-wrap: wrap;
 }
+
+.admin-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .admin-name {
+            font-weight: 500;
+            color: black;
+        }
+
+        .admin-avatar {
+            width: 45px;
+            height: 45px;
+            background: #bdd9ef;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: black;
+            text-decoration:none;
+        }
 
 
 .btn-primary {
@@ -752,94 +777,11 @@
             display: none;
         }
 
-        .carousel-slides {
-            display: flex;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.4s ease;
-        }
-
-        .carousel-slide {
-            flex: 0 0 100%;
-            width: 100%;
-            height: 100%;
-        }
 
         .carousel-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        /* Carousel Dots */
-        .carousel-dots {
-            position: absolute;
-            bottom: 12px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            z-index: 10;
-        }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        /* Carousel Arrows */
-        .carousel-arrows {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            transform: translateY(-50%);
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        .arrow {
-            position: absolute;
-            width: 32px;
-            height: 32px;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            text-align: center;
-            line-height: 32px;
-            font-size: 20px;
-            font-weight: bold;
-            border-radius: 50%;
-            cursor: pointer;
-            pointer-events: auto;
-            transition: all 0.3s ease;
-        }
-
-        .arrow:hover {
-            background: #d4af37;
-            color: #1a2c3e;
-        }
-
-        .prev-arrow {
-            left: 10px;
-        }
-
-        .next-arrow {
-            right: 10px;
-        }
-
-        /* Hide arrows by default, show on hover */
-        .image-container:hover .arrow {
-            display: block;
-        }
-
-        .arrow {
-            display: none;
         }
 
         /* Room Badge (Type) */
@@ -944,86 +886,12 @@
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 10px;
+            text-decoration: none;
         }
 
         .book-btn:hover {
             background: #0e4d92;
             transform: translateY(-2px);
-        }
-
-        /* ==================== SPECIFIC CAROUSEL POSITIONS ==================== */
-        /* Room 1 - 4 images */
-        #room1-img1:checked ~ .carousel-slides { transform: translateX(0%); }
-        #room1-img2:checked ~ .carousel-slides { transform: translateX(-100%); }
-        #room1-img3:checked ~ .carousel-slides { transform: translateX(-200%); }
-        #room1-img4:checked ~ .carousel-slides { transform: translateX(-300%); }
-
-        #room1-img1:checked ~ .carousel-dots label[for="room1-img1"],
-        #room1-img2:checked ~ .carousel-dots label[for="room1-img2"],
-        #room1-img3:checked ~ .carousel-dots label[for="room1-img3"],
-        #room1-img4:checked ~ .carousel-dots label[for="room1-img4"] {
-            background: #d4af37;
-            transform: scale(1.2);
-        }
-
-        /* Room 2 - 3 images */
-        #room2-img1:checked ~ .carousel-slides { transform: translateX(0%); }
-        #room2-img2:checked ~ .carousel-slides { transform: translateX(-100%); }
-        #room2-img3:checked ~ .carousel-slides { transform: translateX(-200%); }
-
-        #room2-img1:checked ~ .carousel-dots label[for="room2-img1"],
-        #room2-img2:checked ~ .carousel-dots label[for="room2-img2"],
-        #room2-img3:checked ~ .carousel-dots label[for="room2-img3"] {
-            background: #d4af37;
-            transform: scale(1.2);
-        }
-
-        /* Room 3 - 3 images */
-        #room3-img1:checked ~ .carousel-slides { transform: translateX(0%); }
-        #room3-img2:checked ~ .carousel-slides { transform: translateX(-100%); }
-        #room3-img3:checked ~ .carousel-slides { transform: translateX(-200%); }
-
-        #room3-img1:checked ~ .carousel-dots label[for="room3-img1"],
-        #room3-img2:checked ~ .carousel-dots label[for="room3-img2"],
-        #room3-img3:checked ~ .carousel-dots label[for="room3-img3"] {
-            background: #d4af37;
-            transform: scale(1.2);
-        }
-
-        /* Room 4 - 2 images */
-        #room4-img1:checked ~ .carousel-slides { transform: translateX(0%); }
-        #room4-img2:checked ~ .carousel-slides { transform: translateX(-100%); }
-
-        #room4-img1:checked ~ .carousel-dots label[for="room4-img1"],
-        #room4-img2:checked ~ .carousel-dots label[for="room4-img2"] {
-            background: #d4af37;
-            transform: scale(1.2);
-        }
-
-        /* Room 5 - 3 images */
-        #room5-img1:checked ~ .carousel-slides { transform: translateX(0%); }
-        #room5-img2:checked ~ .carousel-slides { transform: translateX(-100%); }
-        #room5-img3:checked ~ .carousel-slides { transform: translateX(-200%); }
-
-        #room5-img1:checked ~ .carousel-dots label[for="room5-img1"],
-        #room5-img2:checked ~ .carousel-dots label[for="room5-img2"],
-        #room5-img3:checked ~ .carousel-dots label[for="room5-img3"] {
-            background: #d4af37;
-            transform: scale(1.2);
-        }
-
-        /* Room 6 - 4 images */
-        #room6-img1:checked ~ .carousel-slides { transform: translateX(0%); }
-        #room6-img2:checked ~ .carousel-slides { transform: translateX(-100%); }
-        #room6-img3:checked ~ .carousel-slides { transform: translateX(-200%); }
-        #room6-img4:checked ~ .carousel-slides { transform: translateX(-300%); }
-
-        #room6-img1:checked ~ .carousel-dots label[for="room6-img1"],
-        #room6-img2:checked ~ .carousel-dots label[for="room6-img2"],
-        #room6-img3:checked ~ .carousel-dots label[for="room6-img3"],
-        #room6-img4:checked ~ .carousel-dots label[for="room6-img4"] {
-            background: #d4af37;
-            transform: scale(1.2);
         }
 
         /* Responsive */
@@ -1103,20 +971,7 @@
     }
 }
 
-@keyframes scrollBounce {
-    0% {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-    }
-    70% {
-        opacity: 0.5;
-        transform: translateX(-50%) translateY(15px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-    }
-}
+
         /* Responsive */
         @media (max-width: 1200px) {
             .exp-grid {
@@ -1215,38 +1070,35 @@
         opacity: 1;
         transform: translateX(-50%) translateY(0);
     }
-}
-
-
-@keyframes scrollBounce {
-    0% {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-    }
-    70% {
-        opacity: 0.5;
-        transform: translateX(-50%) translateY(15px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-    }
     </style>
 </head>
 <body>
+<%Guest user=(Guest)session.getAttribute("user");%>
+
     <nav class="navbar">
         <div class="logo">
-            <img src="DCL/sp_hotel_logo-removebg-preview.png" alt="Sapphire Palace logo-img" class="logo-img">
+            <img src="DCL/logo-removebg-preview.png" alt="Sapphire Palace logo-img" class="logo-img">
         </div>
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
+           
             <li><a href="#">About Us</a></li>
             <li><a href="#">Rooms</a></li>
-            <li><a href="#">Gallery</a></li>
-            <li><a href="#">Restaurant</a></li>
+            
             <li><a href="#">Contact Us</a></li>
+             <%if(user!=null){%>
+            <li><a href="myBookings.jsp">My Bookings</a></li>
+            <li><a href="logout">Logout</a></li>
+            <%}%>
         </ul>
+        <%if(user==null){ %>
          <div class="book-btn-nav"><a href="sign.jsp">Book Now</a></div>
+         <%}else{%>
+         <div class="admin-info">
+                <span class="admin-name"><%=user.getName().toUpperCase()%></span>
+               <a href="guestBooking.jsp" class="admin-avatar"><%=user.getName().substring(0, 1) %></a>
+            </div>
+            <%}%>
     </nav>
     <section class="hero">
          <video class="hero-video" autoplay muted loop>
@@ -1254,7 +1106,7 @@
         </video>
         <div class="hero-content">
             <div class="hero-subtitle">Welcome to Paradise</div>
-            <div><img src="DCL/sp_hotel_logo-removebg-preview.png" alt="Sapphire Palace logo-img" class="hero-img">
+            <div><img src="DCL/logo-removebg-preview.png" alt="Sapphire Palace logo-img" class="hero-img">
                 <h1 class="hero-title">Sapphire Palace Hotel</h1></div>
             <div class="hero-divider"></div>
             <p class="hero-description">Where luxury meets the Arabian Sea — intimate elegance, soulful escapes, and unforgettable memories.</p>
@@ -1300,7 +1152,7 @@
                                  .findFirst()
                                  .orElse(null);
 
-            List<Image> images = idao.getImagesByRoomType(type);
+            List<Image> images = idao.getImagesByRoomId(room.getRoomId());
         
         %>
         
@@ -1308,34 +1160,13 @@
         <div class="room-card">
             <div class="image-container">
                 <div class="carousel-wrapper">
-                    
-            
-           <% int counter = 1;
-           for(Image img : images){%>
-            <input type="radio" name="room<%=room.getRoomId()%>" class="carousel-input" id="room<%=room.getRoomId()%>-img<%=counter%>" <%=(counter==1?"checked" :"")%>>
-        	<%counter++; 
-            } %>
-                    
                     <div class="carousel-slides">
-                        
                          <% for(Image img : images) { %>
                 		<div class="carousel-slide">
                     		<img src="<%=img.getFilePath()%>" alt="<%=img.getDescription()%>">
                 		</div>
             		<%}%>
-                    </div>
-                    
-                    <div class="carousel-dots">
-    <%
-        List<Image> images2 = idao.getImagesByRoomType(room.getType());
-        for(int d = 1; d <= images2.size(); d++) {
-    %>
-        <label for="room<%=room.getRoomId()%>-img<%=d%>" class="dot"></label>
-    <%
-        }
-    %>
-</div>
-                                    
+                    </div>                
                 </div>
                 <div class="room-badge"><%=room.getType()%></div>
             </div>
@@ -1349,16 +1180,19 @@
         String[] amenities = room.getAmenities().split(",");
         for(String amenity : amenities) {
             String trimmed = amenity.trim();
-            String icon = "circle"; // default icon
+             // default icon
     %>
-        <span class="feature"><span class="material-icons"><%=icon%></span> <%=trimmed%></span>
+        <span class="feature"><span class="material-icons"></span> <%=trimmed%></span>
     <%
         }
         
     %>
 </div>
-                
-                <button class="book-btn">Book Now →</button>
+                <%if(user!=null){%>
+                <a href="guestBooking.jsp" class="book-btn">Book Now</a>
+                <%}else{%>
+               <a href="sign.jsp" class="book-btn">Book Now</a>
+               <%}%>
             </div>
         </div>
 <%}%>
