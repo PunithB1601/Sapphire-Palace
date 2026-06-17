@@ -212,7 +212,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
-                               
+                               `<th>View Bookings</th>
                             </tr>
                         </thead>
                         
@@ -225,6 +225,9 @@
                             <td><%=g.getName()%></td>
                             <td><%=g.getEmail()%></td>
                             <td><%=g.getPhone()%></td>
+                            <td>
+                            	<a href="booking.jsp?guestId=<%=g.getGuestId()%>" class="btn-primary">Bookings</a>
+                            </td>
                             </tr>
                           <%}%>  
                         </tbody>

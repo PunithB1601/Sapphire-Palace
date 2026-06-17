@@ -95,6 +95,7 @@ public class RoomsDAOImpl implements RoomsDAO {
             ps.setBoolean(4, room.getAvailability());
             ps.setString(5, room.getAmenities());
             ps.setString(6, room.getDescription());
+            ps.setInt(7, room.getRoomId());
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error updating room: " + e.getMessage());

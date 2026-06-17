@@ -1,3 +1,4 @@
+<%@page import="java.util.stream.Collectors"%>
 <%@page import="com.sapphirepalace.servlet.BookRoom"%>
 <%@page import="com.sapphirepalace.dto.Rooms"%>
 <%@page import="com.sapphirepalace.dao.impl.RoomsDAOImpl"%>
@@ -507,7 +508,9 @@
     </div>
 	<%BookingDAO bdao=new BookingDAOImpl();
 	  PaymentDAO pdao=new PaymentDAOImpl();
-	  List<Booking> guestBookings=bdao.getAllBookings().stream().filter(b->b.getGuestId()==guest.getGuestId()).toList();%>
+	  List<Booking> guestBookings=bdao.getAllBookings().stream().filter(book->book.getGuestId()==guest.getGuestId()).collect(Collectors.toList());%>
+	 	
+	 
     <!-- Stats Cards -->
     <div class="stats-row">
         <div class="stat-card">
@@ -519,11 +522,36 @@
 
     <!-- Filter Tabs -->
     <div class="filter-tabs">
-        <a href="#" class="filter-btn active">All Bookings</a>
-        <a href="#" class="filter-btn">Upcoming</a>
-        <a href="#" class="filter-btn">Completed</a>
-        <a href="#" class="filter-btn">Cancelled</a>
+        <a href="myBookings.jsp?guestBooking=all" class="filter-btn active">All Bookings</a>
+         <a href="myBookings.jsp?guestBooking=pending" class="filter-btn">Pending</a>
+        <a href="myBookings.jsp?guestBooking=confirmed" class="filter-btn">Upcoming</a>
+        <a href="myBookings.jsp?guestBooking=completed" class="filter-btn">Completed</a>
+        <a href="myBookings.jsp?guestBooking=cancelled" class="filter-btn">Cancelled</a>
     </div>
+    <%
+String type = request.getParameter("guestBooking");
+
+if (type == null || type.equalsIgnoreCase("ALL")) {
+    // no filtering, keep all
+} else if (type.equalsIgnoreCase("CANCELLED")) {
+    guestBookings = guestBookings.stream()
+        .filter(bookings -> bookings.getStatus().equalsIgnoreCase("CANCELLED"))
+        .collect(Collectors.toList());
+} else if (type.equalsIgnoreCase("CONFIRMED")) {
+    guestBookings = guestBookings.stream()
+        .filter(bookings -> bookings.getStatus().equalsIgnoreCase("CONFIRMED"))
+        .collect(Collectors.toList());
+} else if (type.equalsIgnoreCase("COMPLETED")) {
+    guestBookings = guestBookings.stream()
+        .filter(bookings -> bookings.getStatus().equalsIgnoreCase("COMPLETED"))
+        .collect(Collectors.toList());
+} else if (type.equalsIgnoreCase("PENDING")) {
+    guestBookings = guestBookings.stream()
+        .filter(bookings -> bookings.getStatus().equalsIgnoreCase("PENDING"))
+        .collect(Collectors.toList());
+}
+%>
+
 
     <!-- Bookings List -->
     <div class="bookings-grid">
@@ -536,7 +564,15 @@
                     <span class="booking-id">Booking ID: #SAP<%=b.getBookingId()%></span>
                     <span class="booking-date" style="margin-left: 15px;">Booked on: <%=b.getCheckIn()%></span>
                 </div>
+                <%if(b.getStatus().equalsIgnoreCase("COMPLETED")){%>
+                <span class="status completed"><%=b.getStatus()%></span>
+                <%}else if(b.getStatus().equalsIgnoreCase("CANCELLED")){%>
+                <span class="status cancelled"><%=b.getStatus()%></span>
+                <%}else if(b.getStatus().equalsIgnoreCase("CONFIRMED")){%>
                 <span class="status confirmed"><%=b.getStatus()%></span>
+                <%}else{%>
+                <span class="status pending"><%=b.getStatus()%></span>
+                <%}%>
             </div>
             
             <div class="card-body">
@@ -548,12 +584,7 @@
                 <%Rooms r=rdao.getRoomById(b.getRoomId());%>
                 
                     <h3 class="room-name"><%=r.getType()%></h3>
-                    <div class="room-features">
-                        <span><span class="material-icons" style="font-size: 14px;">king_bed</span> 1 King Bed</span>
-                        <span><span class="material-icons" style="font-size: 14px;">visibility</span> Pool View</span>
-                        <span><span class="material-icons" style="font-size: 14px;">people</span> 2 Guests</span>
-                        <span><span class="material-icons" style="font-size: 14px;">wifi</span> Free Wi-Fi</span>
-                    </div>
+                   
                     <div class="date-info">
                         <div class="date-item"><strong> Check-in:</strong><%=b.getCheckIn() %></div>
                         <div class="date-item"><strong> Check-out:</strong><%=b.getCheckOut()%></div>
@@ -568,7 +599,9 @@
             </div>
             <div class="card-footer">
                 <a href="payment?bookingId=<%=b.getBookingId()%>" class="btn-view"> View Details</a>
+                <%if(b.getStatus().equalsIgnoreCase("PENDING")){%>
                 <a href="cancelBooking.jsp" class="btn-cancel"> Cancel Booking</a>
+                <%}%>
                 <a href="payment?bookingId=<%=b.getBookingId()%>" class="btn-invoice"> Download Invoice</a>
             </div>
             

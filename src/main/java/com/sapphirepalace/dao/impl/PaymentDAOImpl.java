@@ -63,7 +63,7 @@ public class PaymentDAOImpl implements PaymentDAO{
 	        try (PreparedStatement ps = con.prepareStatement(sql)) {
 	           
 	            ResultSet rs = ps.executeQuery();
-	            if (rs.next()) {
+	            while(rs.next()) {
 	                payment = new Payment();
 	                payment.setPaymentId(rs.getInt("payment_id"));
 	                payment.setBookingId(rs.getInt("booking_id"));
@@ -101,6 +101,28 @@ public class PaymentDAOImpl implements PaymentDAO{
         } catch (SQLException e) {
             System.out.println("Error deleting payment: " + e.getMessage());
         }	
+	}
+
+
+	@Override
+	public Payment getPaymentByBookingId(Integer bookingId) {
+		Payment payment = null;
+        String sql = "SELECT * FROM Payment WHERE booking_id=?";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, bookingId);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                payment = new Payment();
+                payment.setPaymentId(rs.getInt("payment_id"));
+                payment.setBookingId(rs.getInt("booking_id"));
+                payment.setAmount(rs.getDouble("amount"));
+                payment.setPaymentDate(rs.getString("payment_date")); // String
+                payment.setMethod(rs.getString("method"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Error fetching payment: " + e.getMessage());
+        }
+        return payment;
 	}
 
 }

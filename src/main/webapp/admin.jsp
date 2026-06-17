@@ -1,6 +1,6 @@
 <%@page import="java.util.stream.Collectors"%>
 <%@page import="java.util.stream.Collector"%>
-<%@page import="com.sapphirepalace.servlet.BookingServlet"%>
+<%@page import="com.sapphirepalace.servlet.UpdateBooking"%>
 <%@page import="com.sapphirepalace.dto.Payment"%>
 <%@page import="java.util.List"%>
 <%@page import="com.sapphirepalace.dao.impl.PaymentDAOImpl"%>
@@ -516,11 +516,7 @@
                 <div class="stat-card">
                     <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
                     <div class="stat-title">Monthly Revenue</div>
-                    <%List<Payment> payments=pdao.getAllPayments();%>
-                    <%Double amount=0.0;
-                    for(Payment p:payments){%>
-                    <%amount+=p.getAmount();%>
-                    <%}%>
+                    <%Double amount=pdao.getAllPayments().stream().collect(Collectors.summingDouble(Payment::getAmount));%>
                     <div class="stat-value"><%=amount%></div>
                 </div>
                 <div class="stat-card">

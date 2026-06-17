@@ -1,3 +1,4 @@
+<%@page import="java.util.stream.Collectors"%>
 <%@page import="com.sapphirepalace.dao.impl.PaymentDAOImpl"%>
 <%@page import="com.sapphirepalace.dao.PaymentDAO"%>
 <%@page import="com.sapphirepalace.dto.Payment"%>
@@ -355,8 +356,16 @@
 	<div id="bookingsPanel" class="content-panel">
            <div>
                     <a href="admin.jsp" class="btn-primary" style="background: #6c757d;"><i class="fas fa-arrow-left"></i> Back</a>
-           </div> 
-            <%List<Booking> bList=bdao.getAllBookings();%>
+           </div>
+           <%List<Booking> bList;
+           	 Integer guestId;%> 
+           <%String sGuestId=request.getParameter("guestId");%>
+           <%if(sGuestId!=null) {%>
+           <%guestId=Integer.parseInt(sGuestId);
+           	 bList=bdao.getAllBookings().stream().filter(g->g.getGuestId()==guestId).collect(Collectors.toList());
+           	 }else{
+           	 bList=bdao.getAllBookings();
+            }%>
             <div class="panel-header">
                 <h2>All Bookings</h2>
                 <select class="filter-select">
@@ -385,7 +394,7 @@
                     <%for(Booking b:bList){%>
                         <tr><td>BK00<%=b.getBookingId()%></td>
                         <td><%=gdao.getGuestById(b.getGuestId()).getName()%></td>
-                        <td><%=rdao.getRoomById(b.getRoomId())%></td>
+                        <td><%=rdao.getRoomById(b.getRoomId()).getType()%></td>
                         <td><%=b.getCheckIn()%></td>
                         <td><%=b.getCheckOut()%></td>
                         
@@ -399,13 +408,15 @@
                         <td><span class="status pending">Pending</span></td>
                         <%}%>
                         
-                        <%if(b.getStatus().equals("COMFIRMED")||b.getStatus().equals("PENDING")){%>
+                        <%if(b.getStatus().equalsIgnoreCase("CONFIRMED")||b.getStatus().equalsIgnoreCase("PENDING")){%>
                          <td>
                          <form action="updateBooking" method="POST">
-                         <select class="filter-select">
+                         <select class="filter-select" name="status">
                     		<option value="CONFIRMED">Confirm</option>
                     		<option value="COMPLETED">Complete</option>
+                    		
                 		</select>
+                		<input type="hidden" name="bookingId" value="<%=b.getBookingId()%>">
                         <button type="submit" class="btn-primary">Update</button>
                         </form>
                          </td>

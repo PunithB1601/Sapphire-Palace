@@ -11,4 +11,5 @@ public interface PaymentDAO {
 	    List<Payment> getAllPayments();
 	    void updatePayment(Payment payment);
 	    void deletePayment(Integer paymentId);
+	    Payment getPaymentByBookingId(Integer bookingId);
 }

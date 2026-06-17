@@ -33,10 +33,12 @@ public class PaymentComplete extends HttpServlet{
 		Guest guest=(Guest)session.getAttribute("user");
 		
 		Integer bookingId=Integer.parseInt(req.getParameter("bookingId"));
+		
+		System.out.println(bookingId);
 		Booking b=bdao.getBookingById(bookingId);
 		if(guest!=null) {
 
-			Payment p=pdao.getAllPayments().stream().filter(alreadyPaid->alreadyPaid.getBookingId()==bookingId).findFirst().orElse(null);
+			Payment p=pdao.getPaymentByBookingId(bookingId);
 			if(p==null) {
 				p=new Payment();
 				p.setBookingId(bookingId);
@@ -46,7 +48,7 @@ public class PaymentComplete extends HttpServlet{
 				pdao.addPayment(p);
 			}
 			forwardToBill(req, resp, bookingId);
-			req.getRequestDispatcher("bill.jsp").forward(req, resp);
+			//req.getRequestDispatcher("bill.jsp").forward(req, resp);
 		}
 		else {
 			req.setAttribute("loginError", "Session expired!");
@@ -68,10 +70,8 @@ public class PaymentComplete extends HttpServlet{
 	    RoomsDAO rdao = new RoomsDAOImpl();
 
 	    Booking b = bdao.getBookingById(bookingId);
-	    Payment p = pdao.getAllPayments().stream()
-	                    .filter(pay -> pay.getBookingId() == bookingId)
-	                    .findFirst()
-	                    .orElse(null);
+	    System.out.println("booking Id"+bookingId);
+	    Payment p = pdao.getPaymentByBookingId(bookingId);
 
 	    Rooms r = rdao.getRoomById(b.getRoomId());
 

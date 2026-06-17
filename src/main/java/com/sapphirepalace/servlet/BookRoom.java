@@ -54,6 +54,11 @@ public class BookRoom extends HttpServlet{
 				req.setAttribute("room", r);
 				req.setAttribute("booking",booking);
 				req.setAttribute("nights", noOfNights(b.getCheckIn(), b.getCheckOut()));
+				
+				//updating room status
+				r.setAvailability(false);
+				rdao.updateRoom(r);
+				
 				//req.setAttribute("success", "Complete payment to confirm your booking!");
 				req.getRequestDispatcher("payment.jsp").forward(req, resp);
 			}

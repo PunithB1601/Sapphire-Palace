@@ -43,7 +43,7 @@ public class BookingDAOImpl implements BookingDAO{
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 booking = new Booking();
                 booking.setBookingId(rs.getInt("booking_id"));
                 booking.setGuestId(rs.getInt("guest_id"));
